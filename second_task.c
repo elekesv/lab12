@@ -14,7 +14,7 @@ when you're ready go to
 #2: 
 Insert a code segment that counts the length of the list! 
 To check it compare the calculated number to the number of elements printed.
-After testing, move and turn this code segment into a 
+After testing, move a//here print the list!nd turn this code segment into a 
 function that receives the list as parameter and returns its length!
 
 and 
@@ -50,6 +50,29 @@ Return NULL if there is no such element.
 
 
 #include <stdlib.h>
+#include <stdio.h>
+sturct board{
+cell** Arr;
+int row,col;
+}
+
+cell* Arr=(cell*)malloc(sizeof(cell*)*row*col);
+arr[i*col+j]
+
+for(int i=0;i<row;i++)
+  {
+    Arr[i]=(cell*)malloc(sizeof(cell)*col);
+  }  
+
+  print_board(cell** Arr,int row,int col)
+
+cell** generate_borad(int col, int row){
+    //megtudom colt
+
+
+}
+
+
 
 typedef struct ListEl {
     int data;
@@ -57,7 +80,6 @@ typedef struct ListEl {
 } ListEl;
 
 
-/* creates a new list from the array elements */
 ListEl *list_build(void) {
     int values[] = { 8, 14, 13, 17, 1, 19, 16, 5, 3, 11, 2,
                      15, 9, 10, 6, 22, 4, 7, 18, 27, -15 };
@@ -74,13 +96,68 @@ ListEl *list_build(void) {
     return lis;
 }
 
+int linkedlen(ListEl* head){
+    int count = 0;
+    while(head!=NULL){
+        count++;
+        head = head->nxt;
+    }
+    return count;
+}
+void delet(ListEl **head){
+    ListEl *temp = *head;
+    ListEl *tempnext;
+    while(temp!=NULL){
+        tempnext = temp->nxt;
+        free(temp);
+        temp = tempnext;
+    }
+    *head = NULL;
+}
+
+void *listinsert(ListEl **head, int data){
+    ListEl*u;
+    u = (ListEl*) malloc(sizeof(ListEl));
+    u->data = data;
+    u->nxt = *head;
+    *head = u;
+}
+
+void insertend(ListEl * head, int data){
+    while(0){
+        if(head->nxt == NULL)
+        head = head->nxt;
+
+    }
+    
+}
+
 
 int main(void) {
     ListEl *head;
+    head =list_build();
+    ListEl *p = head;
+    while(p!=NULL){
+        printf("%d ",p->data);
+        p = p->nxt;
+    }
+    p = head;
+    int count = linkedlen(p);
+    printf("%d\n", count);
+    delet(&head);
+    for(int k = 0; k < 10; k++){
+        int a;
+        scanf("%d", &a);
+        listinsert(&head, a);
+    }
+    p = head;
+    while(p!=NULL){
+        printf("%d ",p->data);
+        p = p->nxt;
+    }
     
-    head = list_build();
     
-    //here print the list!
     
+
     return 0;   
 }
